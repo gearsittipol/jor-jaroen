@@ -127,7 +127,12 @@
     </div>
 
     <div class="container">
-      <form id="registrationForm">
+      <form
+        id="registrationForm"
+        action="https://script.google.com/macros/s/AKfycbwA_lBOofNHXqQlGbOMpWooVaViCsNIEJGzzVHGbmsL_nFQw70v6AJkNL88iv0qC36Vhg/exec"
+        method="POST"
+        target="_self"
+      >
         <label for="role" id="labelRole">เข้าร่วมงานในฐานะ...?</label>
         <select id="role" name="role" required></select>
         <input type="text" id="otherRole" name="otherRole" placeholder="กรุณาระบุ" />
@@ -137,13 +142,13 @@
         <input type="text" id="otherPrefix" name="otherPrefix" placeholder="กรุณาระบุ" />
 
         <label for="fullname" id="labelName">ชื่อ-นามสกุล</label>
-        <input type="text" id="fullname" name="fullname" required pattern="[ก-๙a-zA-Z\s]+" />
+        <input type="text" id="fullname" name="fullname" required />
 
         <label for="phone" id="labelPhone">เบอร์โทรศัพท์</label>
-        <input type="tel" id="phone" name="phone" required pattern="[0-9]{9,10}" />
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{9,10}" title="กรุณากรอกตัวเลขเท่านั้น" />
 
-        <label for="line" id="labelLine">Line ID</label>
-        <input type="text" id="line" name="line" required />
+        <label for="line" id="labelLine">Line ID (ถ้ามี)</label>
+        <input type="text" id="line" name="line" />
 
         <button type="submit" id="submitBtn">ลงทะเบียนเข้างาน</button>
       </form>
@@ -155,8 +160,6 @@
   </footer>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydNIJkxXgLYM9M1IsYHwli2V7QpX3EJJsKn27Bao-EQS16YxewAS61BJfnPpsAk46iXw/exec";
-
     const langs = {
       th: {
         title: "ลงทะเบียนร่วมงาน",
@@ -165,7 +168,7 @@
         prefix: "คำนำหน้าชื่อ",
         name: "ชื่อ-นามสกุล",
         phone: "เบอร์โทรศัพท์",
-        line: "Line ID",
+        line: "Line ID (ถ้ามี)",
         submit: "ลงทะเบียนเข้างาน",
         roles: [
           "-- กรุณาเลือก --",
@@ -184,7 +187,7 @@
         prefix: "Title",
         name: "Full Name",
         phone: "Phone Number",
-        line: "Line ID",
+        line: "Line ID (if available)",
         submit: "Register to Attend",
         roles: [
           "-- Please Select --",
@@ -203,7 +206,7 @@
         prefix: "ခေါင်းစဉ်",
         name: "အမည်အပြည့်အစုံ",
         phone: "ဖုန်းနံပါတ်",
-        line: "Line ID",
+        line: "Line ID (ရှိပါက)",
         submit: "ပေးပို့ပါ",
         roles: [
           "-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --",
@@ -213,10 +216,7 @@
           "ပုံမှန်ဖောက်သည် (အိမ်ရှင်, ကိုယ်တိုင်ဝယ်သူ)",
           "အခြား"
         ],
-        prefixes: ["-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --",
-          "ဦး",
-          "ဒေါ်",
-          "အခြား"]
+        prefixes: ["-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --", "ဦး","ဒေါ်","အခြား"]
       }
     };
 
@@ -267,26 +267,6 @@
     });
 
     updateLang(localStorage.getItem('lang') || 'th');
-
-    document.getElementById('registrationForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      const btn = document.getElementById('submitBtn');
-      btn.disabled = true;
-
-      fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors'
-      })
-      .then(() => {
-        window.location.href = "ty.html";
-      })
-      .catch(() => {
-        alert("เกิดข้อผิดพลาดในการส่งข้อมูล");
-        btn.disabled = false;
-      });
-    });
   </script>
 </body>
 </html>
