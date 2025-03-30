@@ -123,16 +123,11 @@
 
     <div class="heading">
       <h1 id="headerTitle">ลงทะเบียนร่วมงาน</h1>
-      <p id="headerSubtitle">Grand Opening<br>จ.เจริญค้าวัสดุก่อสร้าง</p>
+      <p id="headerSubtitle">Grand Opening<br>JOR.JAROEN KHAWATSADU KORSANG</p>
     </div>
 
     <div class="container">
-      <form
-        id="registrationForm"
-        action="https://script.google.com/macros/s/AKfycbwA_lBOofNHXqQlGbOMpWooVaViCsNIEJGzzVHGbmsL_nFQw70v6AJkNL88iv0qC36Vhg/exec"
-        method="POST"
-        target="_self"
-      >
+      <form id="registrationForm">
         <label for="role" id="labelRole">เข้าร่วมงานในฐานะ...?</label>
         <select id="role" name="role" required></select>
         <input type="text" id="otherRole" name="otherRole" placeholder="กรุณาระบุ" />
@@ -156,14 +151,14 @@
   </div>
 
   <footer>
-    © 2025 บริษัท เจริญค้าวัสดุก่อสร้าง จำกัด
+    © 2025 JOR.JAROEN KHAWATSADU KORSANG
   </footer>
 
   <script>
     const langs = {
       th: {
         title: "ลงทะเบียนร่วมงาน",
-        subtitle: "Grand Opening<br/>จ.เจริญค้าวัสดุก่อสร้าง",
+        subtitle: "Grand Opening<br/>JOR.JAROEN KHAWATSADU KORSANG",
         role: "เข้าร่วมงานในฐานะ...?",
         prefix: "คำนำหน้าชื่อ",
         name: "ชื่อ-นามสกุล",
@@ -216,7 +211,7 @@
           "ပုံမှန်ဖောက်သည် (အိမ်ရှင်, ကိုယ်တိုင်ဝယ်သူ)",
           "အခြား"
         ],
-        prefixes: ["-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --", "ဦး","ဒေါ်","အခြား"]
+        prefixes: ["-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --","ဦး","ဒေါ်","အခြား"]
       }
     };
 
@@ -267,6 +262,19 @@
     });
 
     updateLang(localStorage.getItem('lang') || 'th');
+
+    document.getElementById('registrationForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      fetch("https://script.google.com/macros/s/AKfycbwA_lBOofNHXqQlGbOMpWooVaViCsNIEJGzzVHGbmsL_nFQw70v6AJkNL88iv0qC36Vhg/exec", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      });
+
+      window.location.href = "https://gearsittipol.github.io/jor-jaroen/ty";
+    });
   </script>
 </body>
 </html>
