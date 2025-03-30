@@ -127,7 +127,12 @@
     </div>
 
     <div class="container">
-      <form id="registrationForm">
+      <form
+        id="registrationForm"
+        action="https://script.google.com/macros/s/AKfycbwA_lBOofNHXqQlGbOMpWooVaViCsNIEJGzzVHGbmsL_nFQw70v6AJkNL88iv0qC36Vhg/exec"
+        method="POST"
+        target="_self"
+      >
         <label for="role" id="labelRole">เข้าร่วมงานในฐานะ...?</label>
         <select id="role" name="role" required></select>
         <input type="text" id="otherRole" name="otherRole" placeholder="กรุณาระบุ" />
@@ -211,7 +216,10 @@
           "ပုံမှန်ဖောက်သည် (အိမ်ရှင်, ကိုယ်တိုင်ဝယ်သူ)",
           "အခြား"
         ],
-        prefixes: ["-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --", "ဦး", "ဒေါ်", "အခြား"]
+        prefixes: ["-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --",         
+          "ဦး",
+          "ဒေါ်",
+          "အခြား"]
       }
     };
 
@@ -262,34 +270,6 @@
     });
 
     updateLang(localStorage.getItem('lang') || 'th');
-
-    document.getElementById('registrationForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      document.getElementById("submitBtn").disabled = true;
-
-      fetch('https://script.google.com/macros/s/AKfycbwA_lBOofNHXqQlGbOMpWooVaViCsNIEJGzzVHGbmsL_nFQw70v6AJkNL88iv0qC36Vhg/exec', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.text())
-    .then(result => {
-       const trimmed = result.trim();
-      if (trimmed === "SUCCESS") {
-      window.location.href = 'ty.html';
-        } else if (result === "DUPLICATE") {
-          alert("เบอร์โทรศัพท์นี้เคยลงทะเบียนแล้ว");
-          document.getElementById("submitBtn").disabled = false;
-        } else {
-          alert("เกิดข้อผิดพลาดในการส่งข้อมูล");
-          document.getElementById("submitBtn").disabled = false;
-        }
-      })
-      .catch(error => {
-        alert("เกิดข้อผิดพลาด: " + error);
-        document.getElementById("submitBtn").disabled = false;
-      });
-    });
   </script>
 </body>
 </html>
