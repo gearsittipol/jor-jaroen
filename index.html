@@ -273,9 +273,10 @@
         body: formData
       })
       .then(response => response.text())
-      .then(result => {
-        if (result === "SUCCESS") {
-          window.location.href = 'ty.html';
+    .then(result => {
+       const trimmed = result.trim();
+      if (trimmed === "SUCCESS") {
+      window.location.href = 'ty.html';
         } else if (result === "DUPLICATE") {
           alert("เบอร์โทรศัพท์นี้เคยลงทะเบียนแล้ว");
           document.getElementById("submitBtn").disabled = false;
