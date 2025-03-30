@@ -143,7 +143,7 @@
         <input type="tel" id="phone" name="phone" required pattern="[0-9]{9,10}" title="กรุณากรอกตัวเลขเท่านั้น" />
 
         <label for="line" id="labelLine">Line ID</label>
-        <input type="text" id="line" name="line" />
+        <input type="text" id="line" name="line" required />
 
         <button type="submit" id="submitBtn">ลงทะเบียนเข้างาน</button>
       </form>
@@ -211,12 +211,7 @@
           "ပုံမှန်ဖောက်သည် (အိမ်ရှင်, ကိုယ်တိုင်ဝယ်သူ)",
           "အခြား"
         ],
-        prefixes: [
-          "-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --",
-          "ဦး",
-          "ဒေါ်",
-          "အခြား"
-        ]
+        prefixes: ["-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --", "ဦး", "ဒေါ်", "အခြား"]
       }
     };
 
@@ -271,19 +266,27 @@
     document.getElementById('registrationForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const formData = new FormData(this);
+      document.getElementById("submitBtn").disabled = true;
+
       fetch('https://script.google.com/macros/s/AKfycbwA_lBOofNHXqQlGbOMpWooVaViCsNIEJGzzVHGbmsL_nFQw70v6AJkNL88iv0qC36Vhg/exec', {
         method: 'POST',
         body: formData
       })
-      .then(response => {
-        if (response.ok) {
+      .then(response => response.text())
+      .then(result => {
+        if (result === "SUCCESS") {
           window.location.href = 'ty.html';
+        } else if (result === "DUPLICATE") {
+          alert("เบอร์โทรศัพท์นี้เคยลงทะเบียนแล้ว");
+          document.getElementById("submitBtn").disabled = false;
         } else {
-          alert('เกิดข้อผิดพลาดในการส่งข้อมูล');
+          alert("เกิดข้อผิดพลาดในการส่งข้อมูล");
+          document.getElementById("submitBtn").disabled = false;
         }
       })
       .catch(error => {
-        alert('เกิดข้อผิดพลาด: ' + error);
+        alert("เกิดข้อผิดพลาด: " + error);
+        document.getElementById("submitBtn").disabled = false;
       });
     });
   </script>
