@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fd33b1;
+      font-family: sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    a.button {
+      background-color: #fff;
+      color: #fd33b1;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #f8c1e5;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="thankTitle">ขอบคุณสำหรับการลงทะเบียนเข้าร่วมงาน</h1>
+  <p id="thankText">Grand Opening ร้าน จ.เจริญค้าวัสดุก่อสร้าง</p>
+  <a href="index.html" class="button" id="backBtn">กลับไปหน้าหลัก</a>
+
+  <script>
+    const langs = {
+      th: {
+        title: "ขอบคุณสำหรับการลงทะเบียนเข้าร่วมงาน",
+        text: "Grand Opening ร้าน จ.เจริญค้าวัสดุก่อสร้าง",
+        button: "กลับไปหน้าหลัก"
+      },
+      en: {
+        title: "Thank you for registering",
+        text: "Grand Opening at JOR.JAROEN KHAWATSADU KORSANG",
+        button: "Back to Home"
+      },
+      my: {
+        title: "မှတ်ပုံတင်ခြင်းအတွက် ကျေးဇူးတင်ပါသည်။",
+        text: "JOR.JAROEN KHAWATSADU KORSANG Grand Opening",
+        button: "မူလစာမျက်နှာသို့"
+      }
+    };
+
+    const lang = localStorage.getItem('lang') || 'th';
+    const l = langs[lang];
+
+    document.getElementById("thankTitle").innerText = l.title;
+    document.getElementById("thankText").innerText = l.text;
+    document.getElementById("backBtn").innerText = l.button;
+  </script>
+
+</body>
+</html>
