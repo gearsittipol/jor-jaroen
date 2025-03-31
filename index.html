@@ -109,7 +109,7 @@
   </style>
 </head>
 <body>
-
+  
   <div class="language-bar">
     <select id="languageSelector">
       <option value="th">ไทย</option>
@@ -153,128 +153,130 @@
   <footer>
     © 2025 JOR.JAROEN KHAWATSADU KORSANG
   </footer>
-
-  <script>
-    const langs = {
-      th: {
-        title: "ลงทะเบียนร่วมงาน",
-        subtitle: "Grand Opening<br/>JOR.JAROEN KHAWATSADU KORSANG",
-        role: "เข้าร่วมงานในฐานะ...?",
-        prefix: "คำนำหน้าชื่อ",
-        name: "ชื่อ-นามสกุล",
-        phone: "เบอร์โทรศัพท์",
-        line: "Line ID (ถ้ามี)",
-        submit: "ลงทะเบียนเข้างาน",
-        roles: [
-          "-- กรุณาเลือก --",
-          "ช่าง (ช่างก่อสร้าง, ช่างไฟ, ช่างประปา ฯลฯ)",
-          "ผู้รับเหมา",
-          "เจ้าของร้านวัสดุก่อสร้าง / ร้านค้า",
-          "ลูกค้าทั่วไป (เจ้าของบ้าน, ลูกค้ามาซื้อใช้เอง)",
-          "อื่นๆ"
-        ],
-        prefixes: ["-- กรุณาเลือก --", "นาย", "นาง", "นางสาว", "อื่นๆ"]
-      },
-      en: {
-        title: "Register to Attend",
-        subtitle: "Grand Opening<br/>JOR.JAROEN KHAWATSADU KORSANG",
-        role: "Joining as...?",
-        prefix: "Title",
-        name: "Full Name",
-        phone: "Phone Number",
-        line: "Line ID (if available)",
-        submit: "Register to Attend",
-        roles: [
-          "-- Please Select --",
-          "Technician (Builder, Electrician, Plumber, etc.)",
-          "Contractor",
-          "Construction Store Owner / Retailer",
-          "General Customer (Homeowner, Direct Buyer)",
-          "Other"
-        ],
-        prefixes: ["-- Please Select --", "Mr.", "Mrs.", "Ms.", "Other"]
-      },
-      my: {
-        title: "အလုပ်အကိုင်အတွက် မှတ်ပုံတင်ရန်",
-        subtitle: "Grand Opening<br/>JOR.JAROEN KHAWATSADU KORSANG",
-        role: "အခန်းကဏ္ဍ...?",
-        prefix: "ခေါင်းစဉ်",
-        name: "အမည်အပြည့်အစုံ",
-        phone: "ဖုန်းနံပါတ်",
-        line: "Line ID (ရှိပါက)",
-        submit: "ပေးပို့ပါ",
-        roles: [
-          "-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --",
-          "နည်းပညာရှင် (အိမ်ဆောက်လုပ်, လျှပ်စစ်, ရေချိုးစနစ် စသည်)",
-          "ဆောက်လုပ်ရေးထောက်ခံသူ",
-          "ဆောက်လုပ်ရေးပစ္စည်းအရောင်းဆိုင်",
-          "ပုံမှန်ဖောက်သည် (အိမ်ရှင်, ကိုယ်တိုင်ဝယ်သူ)",
-          "အခြား"
-        ],
-        prefixes: ["-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --","ဦး","ဒေါ်","အခြား"]
-      }
-    };
-
-    function updateLang(lang) {
-      localStorage.setItem('lang', lang);
-      const l = langs[lang];
-      document.getElementById("headerTitle").innerHTML = l.title;
-      document.getElementById("headerSubtitle").innerHTML = l.subtitle;
-      document.getElementById("labelRole").innerText = l.role;
-      document.getElementById("labelPrefix").innerText = l.prefix;
-      document.getElementById("labelName").innerText = l.name;
-      document.getElementById("labelPhone").innerText = l.phone;
-      document.getElementById("labelLine").innerText = l.line;
-      document.getElementById("submitBtn").innerText = l.submit;
-
-      const roleSelect = document.getElementById("role");
-      const prefixSelect = document.getElementById("prefix");
-
-      roleSelect.innerHTML = "";
-      l.roles.forEach(role => {
-        const opt = document.createElement("option");
-        opt.value = role;
-        opt.innerText = role;
-        roleSelect.appendChild(opt);
-      });
-
-      prefixSelect.innerHTML = "";
-      l.prefixes.forEach(prefix => {
-        const opt = document.createElement("option");
-        opt.value = prefix;
-        opt.innerText = prefix;
-        prefixSelect.appendChild(opt);
-      });
+<script>
+  const langs = {
+    th: {
+      title: "ลงทะเบียนร่วมงาน",
+      subtitle: "Grand Opening<br/>JOR.JAROEN KHAWATSADU KORSANG",
+      role: "เข้าร่วมงานในฐานะ...?",
+      prefix: "คำนำหน้าชื่อ",
+      name: "ชื่อ-นามสกุล",
+      phone: "เบอร์โทรศัพท์",
+      line: "Line ID (ถ้ามี)",
+      submit: "ลงทะเบียนเข้างาน",
+      roles: [
+        "-- กรุณาเลือก --",
+        "ช่าง (ช่างก่อสร้าง, ช่างไฟ, ช่างประปา ฯลฯ)",
+        "ผู้รับเหมา",
+        "เจ้าของร้านวัสดุก่อสร้าง / ร้านค้า",
+        "ลูกค้าทั่วไป (เจ้าของบ้าน, ลูกค้ามาซื้อใช้เอง)",
+        "อื่นๆ"
+      ],
+      prefixes: ["-- กรุณาเลือก --", "นาย", "นาง", "นางสาว", "อื่นๆ"]
+    },
+    en: {
+      title: "Register to Attend",
+      subtitle: "Grand Opening<br/>JOR.JAROEN KHAWATSADU KORSANG",
+      role: "Joining as...?",
+      prefix: "Title",
+      name: "Full Name",
+      phone: "Phone Number",
+      line: "Line ID (if available)",
+      submit: "Register to Attend",
+      roles: [
+        "-- Please Select --",
+        "Technician (Builder, Electrician, Plumber, etc.)",
+        "Contractor",
+        "Construction Store Owner / Retailer",
+        "General Customer (Homeowner, Direct Buyer)",
+        "Other"
+      ],
+      prefixes: ["-- Please Select --", "Mr.", "Mrs.", "Ms.", "Other"]
+    },
+    my: {
+      title: "အလုပ်အကိုင်အတွက် မှတ်ပုံတင်ရန်",
+      subtitle: "Grand Opening<br/>JOR.JAROEN KHAWATSADU KORSANG",
+      role: "အခန်းကဏ္ဍ...?",
+      prefix: "ခေါင်းစဉ်",
+      name: "အမည်အပြည့်အစုံ",
+      phone: "ဖုန်းနံပါတ်",
+      line: "Line ID (ရှိပါက)",
+      submit: "ပေးပို့ပါ",
+      roles: [
+        "-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --",
+        "နည်းပညာရှင် (အိမ်ဆောက်လုပ်, လျှပ်စစ်, ရေချိုးစနစ် စသည်)",
+        "ဆောက်လုပ်ရေးထောက်ခံသူ",
+        "ဆောက်လုပ်ရေးပစ္စည်းအရောင်းဆိုင်",
+        "ပုံမှန်ဖောက်သည် (အိမ်ရှင်, ကိုယ်တိုင်ဝယ်သူ)",
+        "အခြား"
+      ],
+      prefixes: ["-- ကျေးဇူးပြု၍ ရွေးချယ်ပါ --", "ဦး", "ဒေါ်", "အခြား"]
     }
+  };
 
-    document.getElementById('languageSelector').addEventListener('change', (e) => {
-      updateLang(e.target.value);
+  function updateLang(lang) {
+    localStorage.setItem('lang', lang);
+    const l = langs[lang];
+    document.getElementById("headerTitle").innerHTML = l.title;
+    document.getElementById("headerSubtitle").innerHTML = l.subtitle;
+    document.getElementById("labelRole").innerText = l.role;
+    document.getElementById("labelPrefix").innerText = l.prefix;
+    document.getElementById("labelName").innerText = l.name;
+    document.getElementById("labelPhone").innerText = l.phone;
+    document.getElementById("labelLine").innerText = l.line;
+    document.getElementById("submitBtn").innerText = l.submit;
+
+    const roleSelect = document.getElementById("role");
+    const prefixSelect = document.getElementById("prefix");
+
+    roleSelect.innerHTML = "";
+    l.roles.forEach(role => {
+      const opt = document.createElement("option");
+      opt.value = role;
+      opt.innerText = role;
+      roleSelect.appendChild(opt);
     });
 
-    document.getElementById('role').addEventListener('change', function () {
-      const showOther = ['อื่นๆ', 'Other', 'အခြား'].includes(this.value);
-      document.getElementById('otherRole').style.display = showOther ? 'block' : 'none';
+    prefixSelect.innerHTML = "";
+    l.prefixes.forEach(prefix => {
+      const opt = document.createElement("option");
+      opt.value = prefix;
+      opt.innerText = prefix;
+      prefixSelect.appendChild(opt);
+    });
+  }
+
+  document.getElementById('languageSelector').addEventListener('change', (e) => {
+    updateLang(e.target.value);
+  });
+
+  document.getElementById('role').addEventListener('change', function () {
+    const showOther = ['อื่นๆ', 'Other', 'အခြား'].includes(this.value);
+    document.getElementById('otherRole').style.display = showOther ? 'block' : 'none';
+  });
+
+  document.getElementById('prefix').addEventListener('change', function () {
+    const showOther = ['อื่นๆ', 'Other', 'အခြား'].includes(this.value);
+    document.getElementById('otherPrefix').style.display = showOther ? 'block' : 'none';
+  });
+
+  updateLang(localStorage.getItem('lang') || 'th');
+
+  // ✅ ส่งข้อมูลด้วย fetch และ delay 1 วิ ก่อน redirect
+  document.getElementById('registrationForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+
+    fetch("https://script.google.com/macros/s/AKfycbydNIJkxXgLYM9M1IsYHwli2V7QpX3EJJsKn27Bao-EQS16YxewAS61BJfnPpsAk46iXw/exec", {
+      method: "POST",
+      body: formData,
+      mode: "no-cors"
     });
 
-    document.getElementById('prefix').addEventListener('change', function () {
-      const showOther = ['อื่นๆ', 'Other', 'အခြား'].includes(this.value);
-      document.getElementById('otherPrefix').style.display = showOther ? 'block' : 'none';
-    });
-
-    updateLang(localStorage.getItem('lang') || 'th');
-
-    document.getElementById('registrationForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-
-      fetch("https://script.google.com/macros/s/AKfycbydNIJkxXgLYM9M1IsYHwli2V7QpX3EJJsKn27Bao-EQS16YxewAS61BJfnPpsAk46iXw/exec", {
-        method: "POST",
-        body: formData,
-        mode: "no-cors"
-      });
-
+    setTimeout(() => {
       window.location.href = "https://gearsittipol.github.io/jor-jaroen/ty";
-    });
-  </script>
+    }, 1000);
+  });
+</script>
 </body>
 </html>
